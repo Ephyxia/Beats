@@ -18,11 +18,11 @@ public class Skin {
 	public static void loadSkin(String dir) {
 		try {
 			buttonLeft = new Image(dir + "button-left" + ".png");
-			buttonLeft.setFilter(Image.FILTER_LINEAR);
+			buttonLeft.setFilter(Image.FILTER_NEAREST);
 			buttonRight = new Image(dir + "button-right" + ".png");
-			buttonRight.setFilter(Image.FILTER_LINEAR);
+			buttonRight.setFilter(Image.FILTER_NEAREST);
 			buttonMiddle = new Image(dir + "button-middle" + ".png");
-			buttonMiddle.setFilter(Image.FILTER_LINEAR);
+			buttonMiddle.setFilter(Image.FILTER_NEAREST);
 		} catch (SlickException e) {
 			System.out.println(Errors.skinFailedToLoad);
 		}
