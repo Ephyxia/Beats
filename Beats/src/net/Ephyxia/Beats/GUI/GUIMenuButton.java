@@ -6,8 +6,13 @@ import org.newdawn.slick.Input;
 
 public class GUIMenuButton extends GUIButton {
 
-	private Color color = Color.white;
-	
+	private Color baseColor = Color.white;
+	private Color hoverColor = Color.blue;
+	private Color mouseDownColor = Color.red;
+
+	private boolean hovered = false;
+	private boolean mouseDown = false;
+
 	public GUIMenuButton(float x, float y, float width, float height, String text) {
 		this.x = x;
 		this.y = y;
@@ -18,17 +23,31 @@ public class GUIMenuButton extends GUIButton {
 
 	@Override
 	void update(Input in, int delta) {
+		resetFlags();
 		updateState(in, delta);
-		
-		
+
+	}
+
+	private void resetFlags() {
+		hovered = false;
+		mouseDown = false;
 	}
 
 	@Override
 	void render(Graphics g) {
-		g.pushTransform();
-		g.setColor(color);
+		pushColor(g);
+
+		g.setColor(baseColor);
+
+		if (hovered) {
+			g.setColor(hoverColor);
+		}
+		if (mouseDown) {
+			g.setColor(mouseDownColor);
+		}
+
 		g.fillRoundRect(x, y, width, height, 16);
-		g.popTransform();
+		pushColor(g);
 	}
 
 	@Override
@@ -38,11 +57,11 @@ public class GUIMenuButton extends GUIButton {
 
 	@Override
 	public void onHover(Input in, int delta) {
-		
+		hovered = true;
 	}
 
 	@Override
 	public void onMouseDown(Input in, int delta) {
-
+		mouseDown = true;
 	}
 }
