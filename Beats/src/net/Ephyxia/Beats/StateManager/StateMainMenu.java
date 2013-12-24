@@ -13,10 +13,10 @@ public class StateMainMenu extends State {
 	private String[] menuButtonText = { "Play", "Get Songs", "Edit Songs", "Options", "Exit" };
 
 	private int buttonX = 940;
-	private int buttonYStart = 208;
+	private int buttonYStart = 240;
 	private int buttonWidth = 560;
 	private int buttonHeight = 96;
-	private int buttonSpacing = 16;
+	private int buttonSpacing = 8;
 
 	// 672 = height of all butttons
 	// button height should be 1/6 of screen height

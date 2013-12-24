@@ -54,7 +54,7 @@ public class GUIMenuButton extends GUIButton {
 		Image bLeft = Skin.buttonLeft.getScaledCopy(height / Skin.buttonLeft.getHeight());
 		Image bMiddle= Skin.buttonMiddle.getScaledCopy((int) width, (int)(height/Skin.buttonMiddle.getHeight() * Skin.buttonMiddle.getHeight()));
 		
-		bMiddle.draw(x + bLeft.getWidth() - 1, y);
+		bMiddle.draw(x + bLeft.getWidth(), y);
 		bLeft.draw(x, y);
 
 		pushColor(g);
@@ -68,6 +68,8 @@ public class GUIMenuButton extends GUIButton {
 	@Override
 	public void onHover(Input in, int delta) {
 		hovered = true;
+		
+		
 	}
 
 	@Override
