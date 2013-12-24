@@ -1,9 +1,12 @@
 package net.Ephyxia.Beats;
 
+import net.Ephyxia.Beats.StateManager.StateHandler;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 public class Beats extends BasicGame {
@@ -18,17 +21,19 @@ public class Beats extends BasicGame {
 	
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		
+		StateHandler.init();
 	}
 
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-
+		Input in = gc.getInput();
+		
+		StateHandler.update(in, delta);
 	}
 	
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		
+		StateHandler.render(g);
 	}
 	
 	public static void main(String[] args) throws SlickException {
