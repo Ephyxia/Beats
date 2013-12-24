@@ -13,6 +13,13 @@ public class Screen {
 		components = new ArrayList<GUIComponent>();
 	}
 	
+	/**
+	 * Adds a GUIComponent object to this screen.
+	 * 
+	 * @author Ephyxia
+	 * @param c - Component to add to this screen
+	 * 
+	 */
 	public void addComponent(GUIComponent c) {
 		components.add(c);
 	}

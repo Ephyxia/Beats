@@ -15,8 +15,12 @@ public class GUIBase extends GUIComponent implements GUIElement {
 
 	}
 
+	/**
+	 * Handles the  detection of mouse states in relation to this GUIComponent.
+	 * Put this in the update method of any element you want the user to be able to interact with.
+	 */
 	@Override
-	void updateState(Input in, int delta) {
+	void updateState(Input in, int delta) { 
 		int mx = in.getMouseX();
 		int my = in.getMouseY();
 		
