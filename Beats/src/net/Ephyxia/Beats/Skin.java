@@ -5,10 +5,16 @@ import org.newdawn.slick.SlickException;
 
 public class Skin {
 	
+	// Making all images static so I don't have to create a million temporary Images which can be really slow.
 	public static Image buttonLeft;
 	public static Image buttonRight;
 	public static Image buttonMiddle;
 	
+	/**
+	 * @author Ephyxia
+	 * @param dir - Root directory of the skin you want to load.
+	 * 
+	 */
 	public static void loadSkin(String dir) {
 		try {
 			buttonLeft = new Image(dir + "button-left" + ".png");
@@ -18,7 +24,7 @@ public class Skin {
 			buttonMiddle = new Image(dir + "button-middle" + ".png");
 			buttonMiddle.setFilter(Image.FILTER_LINEAR);
 		} catch (SlickException e) {
-			System.out.println("Error loading skin make sure you didn't mess with files.");
+			System.out.println(Errors.skinFailedToLoad);
 		}
 	}
 }
