@@ -21,6 +21,7 @@ public class Beats extends BasicGame {
 	
 	@Override
 	public void init(GameContainer gc) throws SlickException {
+		Skin.loadSkin("res/images/skin/");
 		StateHandler.init();
 	}
 
