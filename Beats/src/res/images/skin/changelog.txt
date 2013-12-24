@@ -1,0 +1,22 @@
+================
+Osu! Fantasy VII
+================
+v1.00, August 14, 2008
+- Initial release.
+
+v1.13, August 19, 2008
+- Changed all hit explosions; they are now cleaner a la Xi-Style, and hopefully less distracting.
+- Made a minor fix to playfield.jpg - the kana previously read "fantashi", but accurately it is "fantaji". It has been corrected (thanks peppy).
+- Followpoint has been changed to a desaturated cut of star2.png.
+- Replaced score-x with a transparent 1x1 image. It was out of place with the theme, especially with the results screen (thanks awp).
+
+v1.21, August 29, 2008
+- Added button-left, button-middle and button-right.png.
+- Added sliderpoint-10 and sliderpoint-30.png.
+- Added buttons for flashlight mod and autoplay.
+- Added pretty badass Cloud comboburst.png.
+
+v1.27, September 1, 2008
+- Sliderpoint10 and 30 renamed; there was a hyphen in there that shouldn't have been.
+- Enlarged sliderpoint10 and 30.
+- Added selection-selectoptions and selection-selectoptions-over.
