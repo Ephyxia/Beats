@@ -1,6 +1,7 @@
 package net.Ephyxia.Beats;
 
 import net.Ephyxia.Beats.StateManager.StateHandler;
+import net.Ephyxia.Beats.Utils.Fonts;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
@@ -23,6 +24,7 @@ public class Beats extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		Skin.loadSkin("res/images/skin/");
 		StateHandler.init();
+		Fonts.init();
 	}
 
 	@Override

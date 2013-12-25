@@ -57,16 +57,16 @@ public class GUIMenuButton extends GUIButton {
 	void render(Graphics g) {
 		pushColor(g);
 
-//		g.setColor(baseColor);
-//
-//		if (hovered) {
-//			g.setColor(hoverColor);
-//		}
-//		if (mouseDown) {
-//			g.setColor(mouseDownColor);
-//		}
+		g.setColor(baseColor);
+
+		if (hovered) {
+			g.setColor(hoverColor);
+		}
+		if (mouseDown) {
+			g.setColor(mouseDownColor);
+		}
 		
-//		g.fillRoundRect(x, y, width, height, 16);
+		g.fillRoundRect(x, y, width, height, 16);
 		
 		Image bLeft = Skin.buttonLeft.getScaledCopy(height / Skin.buttonLeft.getHeight());
 		Image bMiddle= Skin.buttonMiddle.getScaledCopy((int) width, (int)(height/Skin.buttonMiddle.getHeight() * Skin.buttonMiddle.getHeight()));
