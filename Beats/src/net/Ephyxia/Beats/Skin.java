@@ -24,9 +24,17 @@ public class Skin {
 		// Menu text
 		skin.put("menu-play", load(dir + "MainMenu/Play" + ".png", true));
 		skin.put("menu-edit", load(dir + "MainMenu/Edit" + ".png", true));
-		skin.put("menu-getsongs", load(dir + "MainMenu/GetSongs" + ".png", true));
+		skin.put("menu-download", load(dir + "MainMenu/GetSongs" + ".png", true));
 		skin.put("menu-options", load(dir + "MainMenu/Options" + ".png", true));
 		skin.put("menu-quit", load(dir + "MainMenu/Quit" + ".png", true));
+		// Menu icons
+		skin.put("menu-play-icon", load(dir + "MainMenu/play-icon" + ".png", true));
+		skin.put("menu-edit-icon", load(dir + "MainMenu/edit-icon" + ".png", true));
+		skin.put("menu-download-icon", load(dir + "MainMenu/download-icon" + ".png", true));
+		skin.put("menu-options-icon", load(dir + "MainMenu/options-icon" + ".png", true));
+		skin.put("menu-quit-icon", load(dir + "MainMenu/quit-icon" + ".png", true));
+		
+		// TODO: create a glow effect for the main menu
 	}
 
 	private static Image load(String path, boolean alias) {

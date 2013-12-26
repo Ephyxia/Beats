@@ -10,7 +10,7 @@ public class StateMainMenu extends State {
 
 	Screen screen;
 
-	private String[] menuButtonText = { "menu-play", "menu-edit", "menu-getsongs", "menu-options", "menu-quit" };
+	private String[] menuButtonText = { "menu-play", "menu-edit", "menu-download", "menu-options", "menu-quit" };
 
 	private int buttonX = 940;
 	private int buttonYStart = 240;

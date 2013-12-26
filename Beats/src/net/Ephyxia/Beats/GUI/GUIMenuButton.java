@@ -16,8 +16,10 @@ public class GUIMenuButton extends GUIButton {
 
 	private boolean hovered = false;
 	private boolean mouseDown = false;
-	
+
 	private float xOffset = 0.0f;
+
+	private static Image[] buttonIcons = { skin.get("menu-play-icon"), skin.get("menu-edit-icon"), skin.get("menu-download-icon"), skin.get("menu-options-icon"), skin.get("menu-quit-icon") };
 
 	public GUIMenuButton(float x, float y, float width, float height, String text) {
 		this.x = x;
@@ -31,20 +33,20 @@ public class GUIMenuButton extends GUIButton {
 	void update(Input in, int delta) {
 		resetFlags();
 		updateState(in, delta);
-		
-		if(hovered) {
-			if(xOffset > -40f) {
+
+		if (hovered) {
+			if (xOffset > -40f) {
 				xOffset -= .3f * delta;
 			}
-		}else {
-			if(xOffset < 0) {
+		} else {
+			if (xOffset < 0) {
 				xOffset += .3f * delta;
 			}
 		}
-		
-		if(xOffset > 0)
+
+		if (xOffset > 0)
 			xOffset = 0;
-		if(xOffset < -40f)
+		if (xOffset < -40f)
 			xOffset = -40f;
 
 	}
@@ -61,21 +63,23 @@ public class GUIMenuButton extends GUIButton {
 		g.setColor(baseColor);
 
 		if (hovered) {
-			
+
 		}
 		if (mouseDown) {
 			g.setColor(mouseDownColor);
 		}
-		
-//		g.fillRoundRect(x, y, width, height, 16);
-		
+
+		//		g.fillRoundRect(x, y, width, height, 16);
+
 		Image bLeft = skin.get("menu-button-left").getScaledCopy(height / skin.get("menu-button-left").getHeight());
-		Image bMiddle= skin.get("menu-button-middle").getScaledCopy((int) width, (int)(height/skin.get("menu-button-middle").getHeight() * skin.get("menu-button-middle").getHeight()));
-		
+		Image bMiddle = skin.get("menu-button-middle").getScaledCopy((int) width, (int) (height / skin.get("menu-button-middle").getHeight() * skin.get("menu-button-middle").getHeight()));
+
 		bMiddle.draw(x + bLeft.getWidth() + xOffset, y);
 		bLeft.draw(x + xOffset, y);
-		
-		skin.get(text).getScaledCopy((float)(skin.get(text).getHeight()/175f)).draw(x + 96 + xOffset, y + 28);
+
+		skin.get(text).getScaledCopy((float) (skin.get(text).getHeight() / 175f)).draw(x + 96 + xOffset, y + 28);
+
+		skin.get(text + "-icon").getScaledCopy(64, 64).draw(x + xOffset + 24, y + 20);
 
 		popColor(g);
 	}
