@@ -1,6 +1,7 @@
 package net.Ephyxia.Beats.GUI;
 
-import net.Ephyxia.Beats.Skin;
+import static net.Ephyxia.Beats.Skin.*;
+import net.Ephyxia.Beats.Utils.Fonts;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -60,21 +61,23 @@ public class GUIMenuButton extends GUIButton {
 		g.setColor(baseColor);
 
 		if (hovered) {
-			g.setColor(hoverColor);
+			
 		}
 		if (mouseDown) {
 			g.setColor(mouseDownColor);
 		}
 		
-		g.fillRoundRect(x, y, width, height, 16);
+//		g.fillRoundRect(x, y, width, height, 16);
 		
-		Image bLeft = Skin.buttonLeft.getScaledCopy(height / Skin.buttonLeft.getHeight());
-		Image bMiddle= Skin.buttonMiddle.getScaledCopy((int) width, (int)(height/Skin.buttonMiddle.getHeight() * Skin.buttonMiddle.getHeight()));
+		Image bLeft = skin.get("menu-button-left").getScaledCopy(height / skin.get("menu-button-left").getHeight());
+		Image bMiddle= skin.get("menu-button-middle").getScaledCopy((int) width, (int)(height/skin.get("menu-button-middle").getHeight() * skin.get("menu-button-middle").getHeight()));
 		
 		bMiddle.draw(x + bLeft.getWidth() + xOffset, y);
 		bLeft.draw(x + xOffset, y);
+		
+		skin.get(text).getScaledCopy((float)(skin.get(text).getHeight()/175f)).draw(x + 96 + xOffset, y + 28);
 
-		pushColor(g);
+		popColor(g);
 	}
 
 	@Override
