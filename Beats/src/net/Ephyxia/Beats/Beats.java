@@ -30,7 +30,7 @@ public class Beats extends BasicGame {
 		Skin.loadSkin("res/images/skin/");
 		StateHandler.init();
 		Fonts.init();
-
+		
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		File file = new File(Beats.class.getProtectionDomain().getCodeSource().getLocation().getFile());
@@ -42,7 +42,6 @@ public class Beats extends BasicGame {
 		}
 		
 		System.out.println(file2.getPath());
-		SongInfo info = new SongInfo("jimmy", "jimmy", "", 0f, 1, 0f, file2.getPath(), null);
 	}
 
 	@Override
@@ -57,7 +56,7 @@ public class Beats extends BasicGame {
 		StateHandler.render(g);
 
 		g.setFont(Fonts.get(24));
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 	}
 
 	public static void main(String[] args) throws SlickException {

@@ -21,7 +21,7 @@ public class StateHandler {
 		states.put(MAIN_MENU_STATE, new StateMainMenu());
 		states.put(GAMEPLAY_STATE, new StateGameplay());
 		states.put(OPTIONS_STATE, new StateOptions());
-		states.put(SONG_SELECT_STATE, new StateOptions());
+		states.put(SONG_SELECT_STATE, new StateSongSelect());
 		
 		enterState(MAIN_MENU_STATE);
 	}
@@ -29,6 +29,7 @@ public class StateHandler {
 	public static void enterState(int stateID) {
 		currentState = states.get(stateID);
 		currentState.init();
+		System.out.println("You just entered the " + currentState.getClass().getName());
 	}
 
 	public static void update(Input in, int delta) {

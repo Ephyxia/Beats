@@ -67,10 +67,10 @@ public class GUIMenuButton extends GUIButton {
 
 		}
 		if (mouseDown) {
-			
+
 		}
 
-		//		g.fillRoundRect(x, y, width, height, 16);
+		// g.fillRoundRect(x, y, width, height, 16);
 
 		Image bLeft = skin.get("menu-button-left").getScaledCopy(height / skin.get("menu-button-left").getHeight());
 		Image bMiddle = skin.get("menu-button-middle").getScaledCopy((int) width, (int) (height / skin.get("menu-button-middle").getHeight() * skin.get("menu-button-middle").getHeight()));
@@ -88,8 +88,8 @@ public class GUIMenuButton extends GUIButton {
 	@Override
 	public void onClick(Input in, int delta) {
 		System.out.println("You clicked the " + text + " button!");
-		
-		if(text == "menu-play") {
+
+		if (text == "menu-play") {
 			StateHandler.enterState(StateHandler.SONG_SELECT_STATE);
 		}
 	}

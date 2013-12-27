@@ -4,6 +4,7 @@ Beats format v1
 AudioFile: kaptainpolka.ogg
 PreviewTime: 1000
 BPM: 170
+Background: World-of-Goo-Wallpaper.png
 
 [Metadata]
 Title: Kaptain Polka
@@ -12,6 +13,7 @@ Creator: Ephyxia
 
 [Stats]
 DrainRate: 5
+Difficulty: 8
 ApproachRate: 8
 
 
