@@ -11,6 +11,13 @@ public class SongInfo {
 	private String title = "Title";
 	private String artist = "Artist";
 	private String creator = "Creator";
+	private String bgPath = "path";
+	
+
+	public void setBgPath(String bgPath) {
+		this.bgPath = bgPath;
+	}
+
 	private float BPM = 100;
 	private float length = 100;
 	private float difficulty = 10;
@@ -27,9 +34,13 @@ public class SongInfo {
 		this.song = song;
 		if (bg != null)
 			this.background = bg;
+		this.dir = dir;
 		// else backgroung = skin.default bg
 	}
 
+	public String getBgPath() {
+		return bgPath;
+	}
 	public SongInfo() {
 
 	}
