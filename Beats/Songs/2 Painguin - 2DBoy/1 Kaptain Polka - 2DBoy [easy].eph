@@ -1,0 +1,22 @@
+Beats format v1
+
+[General]
+AudioFile: DikkiPainguinLoop(rev-1).ogg
+PreviewTime: 1000
+BPM: 170
+Background: World-of-Goo-Wallpaper.png
+
+[Metadata]
+Title: Painguin
+Artist: 2DBoy
+Creator: Ephyxia
+
+[Stats]
+DrainRate: 5
+Difficulty: 8
+ApproachRate: 8
+
+
+[HitObjects]
+// [notes], offSet, hold length
+[0:1:0:1:0],1222,0
