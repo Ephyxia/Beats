@@ -33,6 +33,8 @@ public class Skin {
 		skin.put("menu-download-icon", load(dir + "MainMenu/download-icon" + ".png", true));
 		skin.put("menu-options-icon", load(dir + "MainMenu/options-icon" + ".png", true));
 		skin.put("menu-quit-icon", load(dir + "MainMenu/quit-icon" + ".png", true));
+		// Menu background
+		skin.put("menu-background", load(dir + "MainMenu/background" + ".png", true));
 		
 		// TODO: create a glow effect for the main menu
 	}

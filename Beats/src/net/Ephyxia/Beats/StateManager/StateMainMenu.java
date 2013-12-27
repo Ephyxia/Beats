@@ -1,5 +1,7 @@
 package net.Ephyxia.Beats.StateManager;
 
+import net.Ephyxia.Beats.Beats;
+import net.Ephyxia.Beats.Skin;
 import net.Ephyxia.Beats.GUI.GUIMenuButton;
 import net.Ephyxia.Beats.GUI.Screen;
 
@@ -37,6 +39,7 @@ public class StateMainMenu extends State {
 
 	@Override
 	void render(Graphics g) {
+		Skin.skin.get("menu-background").getScaledCopy(Beats.width, Beats.height).draw();
 		screen.render(g);
 	}
 }

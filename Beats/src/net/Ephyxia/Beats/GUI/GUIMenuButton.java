@@ -1,6 +1,7 @@
 package net.Ephyxia.Beats.GUI;
 
 import static net.Ephyxia.Beats.Skin.*;
+import net.Ephyxia.Beats.StateManager.StateHandler;
 import net.Ephyxia.Beats.Utils.Fonts;
 
 import org.newdawn.slick.Color;
@@ -66,7 +67,7 @@ public class GUIMenuButton extends GUIButton {
 
 		}
 		if (mouseDown) {
-			g.setColor(mouseDownColor);
+			
 		}
 
 		//		g.fillRoundRect(x, y, width, height, 16);
@@ -87,6 +88,10 @@ public class GUIMenuButton extends GUIButton {
 	@Override
 	public void onClick(Input in, int delta) {
 		System.out.println("You clicked the " + text + " button!");
+		
+		if(text == "menu-play") {
+			StateHandler.enterState(StateHandler.SONG_SELECT_STATE);
+		}
 	}
 
 	@Override

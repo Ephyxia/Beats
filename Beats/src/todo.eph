@@ -1,0 +1,4 @@
+load songs 
+
+Beats.class.getProtectionDomain().getCodeSource().getLocation().getPath() <=== get path of jar file or .exe
+

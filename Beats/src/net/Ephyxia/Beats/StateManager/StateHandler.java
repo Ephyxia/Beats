@@ -11,6 +11,7 @@ public class StateHandler {
 	public static final int MAIN_MENU_STATE = 0;
 	public static final int GAMEPLAY_STATE = 1;
 	public static final int OPTIONS_STATE = 2;
+	public static final int SONG_SELECT_STATE = 3;
 
 	private static Map<Integer, State> states = new HashMap<Integer, State>();
 
@@ -20,6 +21,7 @@ public class StateHandler {
 		states.put(MAIN_MENU_STATE, new StateMainMenu());
 		states.put(GAMEPLAY_STATE, new StateGameplay());
 		states.put(OPTIONS_STATE, new StateOptions());
+		states.put(SONG_SELECT_STATE, new StateOptions());
 		
 		enterState(MAIN_MENU_STATE);
 	}

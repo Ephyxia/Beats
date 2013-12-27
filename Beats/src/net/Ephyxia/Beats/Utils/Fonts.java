@@ -19,39 +19,24 @@ public class Fonts {
 
 	@SuppressWarnings("unchecked")
 	public static void init() {
-//		try {
-//			InputStream in2 = ResourceLoader.getResourceAsStream("res/fonts/Subway Black.ttf");
-//			Font ph2 = Font.createFont(Font.TRUETYPE_FONT, in2);
-//
-//			for (int i = 12; i <= 48; i += 4) {
-//				UnicodeFont font = new UnicodeFont(ph2.deriveFont(0, i));
-//				font.addAsciiGlyphs();
-//				ColorEffect e = new ColorEffect();
-//				e.setColor(java.awt.Color.white);
-//				font.getEffects().add(e);
-//				font.loadGlyphs();
-//				fonts.put(i, font);
-//			}
-//
-//			in2.close();
-//
-//			InputStream in = ResourceLoader.getResourceAsStream("res/fonts/Subway Shadow.ttf");
-//			Font ph = Font.createFont(Font.TRUETYPE_FONT, in);
-//
-//			for (int i = 12; i <= 48; i += 4) {
-//				UnicodeFont font = new UnicodeFont(ph.deriveFont(0, i));
-//				font.addAsciiGlyphs();
-//				ColorEffect e = new ColorEffect();
-//				e.setColor(java.awt.Color.white);
-//				font.getEffects().add(e);
-//				font.loadGlyphs();
-//				fonts.put(i + SHADOW, font);
-//			}
-//
-//			in.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			InputStream in = ResourceLoader.getResourceAsStream("res/fonts/Quivira.ttf");
+			Font ph = Font.createFont(Font.TRUETYPE_FONT, in);
+
+			for (int i = 12; i <= 48; i += 4) {
+				UnicodeFont font = new UnicodeFont(ph.deriveFont(0, i));
+				font.addAsciiGlyphs();
+				ColorEffect e = new ColorEffect();
+				e.setColor(java.awt.Color.white);
+				font.getEffects().add(e);
+				font.loadGlyphs();
+				fonts.put(i + SHADOW, font);
+			}
+
+			in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static UnicodeFont get(int size) {
