@@ -3,3 +3,5 @@ load songs
 Beats.class.getProtectionDomain().getCodeSource().getLocation().getPath() <=== get path of jar file or .exe
 
 store metadata for songsd in a file so they arent rescanned everytime the Select song state is opened
+
+
