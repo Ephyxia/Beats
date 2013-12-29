@@ -28,10 +28,35 @@ public class StateSongSelect extends State {
 	// preview.play();
 
 	private ArrayList<SongInfo[]> songList = new ArrayList<SongInfo[]>();
+	private ArrayList<String> songs = new ArrayList<String>();
 
 	@Override
 	void init() {
 		screen = new Screen();
+
+		loadSongs();
+	}
+
+	/**
+	 * Loads song data from SongList.sapp and stores it into the songs ArrayList as a set of strings.
+	 */
+	private void loadSongs() {
+		try {
+			File par = new File(Beats.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+			File dir = new File(par.getParentFile().getPath() + "/Songs/SongList.sapp");
+
+			BufferedReader in = new BufferedReader(new FileReader(dir));
+
+			String line;
+
+			while ((line = in.readLine()) != null) {
+				songs.add(line);
+			}
+
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -47,15 +72,19 @@ public class StateSongSelect extends State {
 	void render(Graphics g) {
 		screen.render(g);
 
-//		g.drawString("Number of loaded Songs: " + songList.size(), 16, 32);
-//		g.drawString("Number of loaded maps: " + getLoadedMaps(), 16, 48);
+		g.drawString("Number of loaded Songs: " + songs.size(), 16, 32);
+		// g.drawString("Number of loaded maps: " + getLoadedMaps(), 16, 48);
 	}
 
+	
+	/**
+	 *  Does a complete scan of the Songs folder and stores the song metadata into the SongList.sapp file.
+	 */
 	private void refreshSongList() {
 		long startTime = System.currentTimeMillis();
 
 		songList = new ArrayList<SongInfo[]>();
-		
+
 		File file = new File(Beats.class.getProtectionDomain().getCodeSource().getLocation().getFile());
 		File file2 = new File(file.getParentFile().getPath() + "/Songs");
 
@@ -66,46 +95,36 @@ public class StateSongSelect extends State {
 					songList.add(getSongInfo(f));
 			}
 		}
-		
+
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(file2.getCanonicalPath() + "songList.sapp", false));
-			
-			for(SongInfo[] s : songList) {
-				for(SongInfo ss : s) {
-					out.write(
-							ss.getTitle() + ":MMMMMMMMM" + 
-							ss.getArtist() + ":MMMMMMMMM" +
-							ss.getCreator() + ":MMMMMMMMM" +
-							ss.getDir().getCanonicalPath() + ":MMMMMMMMM" + 
-							ss.getSong().getName() + ":MMMMMMMMM" +
-							ss.getBgPath() + ":MMMMMMMMM" + 
-							ss.getDifficulty() + ":MMMMMMMMM");
+			BufferedWriter out = new BufferedWriter(new FileWriter(file2.getCanonicalPath() + "/SongList.sapp", false));
+
+			for (SongInfo[] s : songList) {
+				for (SongInfo ss : s) {
+					out.write(ss.getTitle() + ":" + ss.getArtist() + ":" + ss.getCreator() + ":" + ss.getDir().getCanonicalPath() + ":" + ss.getSong().getName() + ":" + ss.getBgPath() + ":" + ss.getDifficulty() + ":");
 					out.newLine();
 				}
 			}
-			
+
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		songList = null;
-		
+
 		Runtime.getRuntime().gc();
 
 		System.out.println("Loaded all songs in " + (System.currentTimeMillis() - startTime));
+
+		loadSongs();
 	}
 
-	int getLoadedMaps() {
-		int num = 0;
-
-		for (SongInfo[] s : songList) {
-			num += s.length;
-		}
-
-		return num;
-	}
-
+	/**
+	 * Helper method for reading an .eph file and retrieving basic info from it.
+	 * @param ff
+	 * @return
+	 */
 	private SongInfo parseSong(File ff) {
 
 		SongInfo s = new SongInfo();
