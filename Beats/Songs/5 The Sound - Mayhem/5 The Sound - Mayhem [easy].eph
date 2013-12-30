@@ -1,14 +1,14 @@
 Beats format v1
 
 [General]
-AudioFile: kaptainpolka.ogg
+AudioFile: 06 The Sound.ogg
 PreviewTime: 1000
 BPM: 170
-Background: World-of-Goo-Wallpaper.png
+Background: mayhem_wallpaper_by_an7hro-d3fsben.png
 
 [Metadata]
-Title: Kaptain Polka
-Artist: 2DBoy
+Title: The Sound
+Artist: Mayhem
 Creator: Ephyxia
 
 [Stats]

@@ -49,6 +49,7 @@ public class StateSongSelect extends State {
 		screen = new Screen();
 
 		bgImage = Skin.skin.get("menu-background");
+		refreshSongList();
 		loadSongs();
 		updateBG();
 	}
@@ -210,7 +211,6 @@ public class StateSongSelect extends State {
 				} else if (line.startsWith("Creator")) {
 					s.setCreator(line.split(":")[1].trim());
 				} else if (line.startsWith("Background")) {
-					s.setBackground(new Image(ff.getParent() + "/" + line.split(":")[1].trim()));
 					s.setBgPath(ff.getParent() + "/" + line.split(":")[1].trim());
 				} else if (line.startsWith("AudioFile")) {
 					s.setSong(new File(ff.getParent() + "/" + line.split(":")[1].trim()));
@@ -223,8 +223,6 @@ public class StateSongSelect extends State {
 
 			in.close();
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 		return s;
