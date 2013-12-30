@@ -3,7 +3,7 @@ package net.Ephyxia.Beats;
 import java.awt.Font;
 import java.io.File;
 
-import net.Ephyxia.Beats.StateManager.SongInfo;
+import net.Ephyxia.Beats.Songs.SongInfo;
 import net.Ephyxia.Beats.StateManager.StateHandler;
 import net.Ephyxia.Beats.Utils.Fonts;
 

@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import net.Ephyxia.Beats.Beats;
+import net.Ephyxia.Beats.Skin;
 import net.Ephyxia.Beats.GUI.Screen;
+import net.Ephyxia.Beats.Songs.SongInfo;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
@@ -18,6 +21,10 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 public class StateSongSelect extends State {
+
+	public static final int MEGABYTE = 1024 * 1024;
+	
+	public static final int SPLIT_BG = 6;
 
 	Screen screen;
 
@@ -30,17 +37,30 @@ public class StateSongSelect extends State {
 	private ArrayList<SongInfo[]> songList = new ArrayList<SongInfo[]>();
 	private ArrayList<String> songs = new ArrayList<String>();
 
+	private int selectedIndex = 1;
+	private float selectedTargetHeight = 128f;
+	private float selectedHeight = 128f;
+	private float normalHeight = 96f;
+	
+	private Image bgImage;
+
 	@Override
 	void init() {
 		screen = new Screen();
 
+		bgImage = Skin.skin.get("menu-background");
 		loadSongs();
+		updateBG();
 	}
 
 	/**
-	 * Loads song data from SongList.sapp and stores it into the songs ArrayList as a set of strings.
+	 * Loads song data from SongList.sapp and stores it into the songs ArrayList
+	 * as a set of strings.
 	 */
 	private void loadSongs() {
+
+		songs = new ArrayList<String>();
+
 		try {
 			File par = new File(Beats.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 			File dir = new File(par.getParentFile().getPath() + "/Songs/SongList.sapp");
@@ -63,22 +83,65 @@ public class StateSongSelect extends State {
 	void update(Input in, int delta) {
 		screen.update(in, delta);
 
+		if (in.isKeyPressed(Input.KEY_UP)) {
+			if (selectedIndex > 0)
+				selectedIndex--;
+			else
+				selectedIndex = songs.size() - 1;
+			
+			updateBG();
+		}
+		if (in.isKeyPressed(Input.KEY_DOWN)) {
+			if (selectedIndex < songs.size() - 1)
+				selectedIndex++;
+			else
+				selectedIndex = 0;
+			
+			updateBG();
+		}
 		if (in.isKeyPressed(Input.KEY_F5)) {
 			refreshSongList();
 		}
 	}
 
+	private void updateBG() {
+		try {
+			bgImage = new Image(songs.get(selectedIndex).split("::")[SPLIT_BG]);
+			System.out.println(songs.get(selectedIndex).split("::")[SPLIT_BG]);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	void render(Graphics g) {
+		bgImage.getScaledCopy(Beats.width, Beats.height).draw();
+		
 		screen.render(g);
 
 		g.drawString("Number of loaded Songs: " + songs.size(), 16, 32);
-		// g.drawString("Number of loaded maps: " + getLoadedMaps(), 16, 48);
+
+//		for (int i = 0; i < songs.size(); i++) {
+//			g.drawString(songs.get(i), 16, 64 + 16 * i);
+//		}
+
+		for (int i = selectedIndex - 3; i < selectedIndex + 5; i++) {
+			if (i >= 0 && i <= songs.size() - 1) {
+				drawSongPreview(-(selectedIndex - i), songs.get(i), g);
+			}
+		}
 	}
 
-	
+	private void drawSongPreview(int index, String string, Graphics g) {
+		g.setColor(Color.red);
+		g.fillRoundRect(64 - (16 * Math.abs(index)), (Beats.height / 2) - (selectedHeight / 2) + (index * 104), 300, 96, 16);
+		g.setColor(Color.black);
+		g.drawString("" + index + " : " + songs.get(selectedIndex + index).split("::")[1], 64 - (16 * Math.abs(index)) + 8, (Beats.height / 2) - (selectedHeight / 2) + (index * 104) + 8);
+	}
+
 	/**
-	 *  Does a complete scan of the Songs folder and stores the song metadata into the SongList.sapp file.
+	 * Does a complete scan of the Songs folder and stores the song metadata
+	 * into the SongList.sapp file.
 	 */
 	private void refreshSongList() {
 		long startTime = System.currentTimeMillis();
@@ -101,7 +164,7 @@ public class StateSongSelect extends State {
 
 			for (SongInfo[] s : songList) {
 				for (SongInfo ss : s) {
-					out.write(ss.getTitle() + ":" + ss.getArtist() + ":" + ss.getCreator() + ":" + ss.getDir().getCanonicalPath() + ":" + ss.getSong().getName() + ":" + ss.getBgPath() + ":" + ss.getDifficulty() + ":");
+					out.write(ss.getMapID() + "::" + ss.getTitle() + "::" + ss.getArtist() + "::" + ss.getCreator() + "::" + ss.getDir().getCanonicalPath() + "::" + ss.getSong().getName() + "::" + ss.getBgPath() + "::" + ss.getDifficulty() + "::");
 					out.newLine();
 				}
 			}
@@ -122,6 +185,7 @@ public class StateSongSelect extends State {
 
 	/**
 	 * Helper method for reading an .eph file and retrieving basic info from it.
+	 * 
 	 * @param ff
 	 * @return
 	 */
@@ -135,6 +199,8 @@ public class StateSongSelect extends State {
 			BufferedReader in = new BufferedReader(new FileReader(ff));
 
 			String line;
+
+			s.setMapID(Integer.parseInt(ff.getName().split(" ")[0]));
 
 			while ((line = in.readLine()) != null) {
 				if (line.startsWith("Title")) {

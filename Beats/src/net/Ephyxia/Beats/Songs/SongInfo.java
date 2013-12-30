@@ -1,4 +1,4 @@
-package net.Ephyxia.Beats.StateManager;
+package net.Ephyxia.Beats.Songs;
 
 import java.io.File;
 
@@ -8,6 +8,7 @@ public class SongInfo {
 
 	private File dir;
 	private File song;
+	private int MapID;
 	private String title = "Title";
 	private String artist = "Artist";
 	private String creator = "Creator";
@@ -24,7 +25,7 @@ public class SongInfo {
 
 	private Image background;
 
-	public SongInfo(File dir, File song, String title, String artist, String creator, float difficulty, float BPM, float length, String path, Image bg) {
+	public SongInfo(int MapID, File dir, File song, String title, String artist, String creator, float difficulty, float BPM, float length, String path, Image bg) {
 		this.title = title;
 		this.artist = artist;
 		this.creator = creator;
@@ -35,7 +36,16 @@ public class SongInfo {
 		if (bg != null)
 			this.background = bg;
 		this.dir = dir;
-		// else backgroung = skin.default bg
+		this.MapID = MapID;
+		// else background = skin.defaultBG
+	}
+
+	public int getMapID() {
+		return MapID;
+	}
+
+	public void setMapID(int mapID) {
+		MapID = mapID;
 	}
 
 	public String getBgPath() {
