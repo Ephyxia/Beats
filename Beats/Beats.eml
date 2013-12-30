@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component jdk="JavaSE-1.7">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="jinput.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Beats/src/res/libs/jinput.jar!/"/>
+	</lib>
+	<lib name="jogg-0.0.7.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Beats/src/res/libs/jogg-0.0.7.jar!/"/>
+	</lib>
+	<lib name="jorbis-0.0.15.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Beats/src/res/libs/jorbis-0.0.15.jar!/"/>
+	</lib>
+	<lib name="lwjgl_util.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Beats/src/res/libs/lwjgl_util.jar!/"/>
+	</lib>
+	<lib name="lwjgl.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Beats/src/res/libs/lwjgl.jar!/"/>
+	</lib>
+	<lib name="slick.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/src/res/libs/Slick_Src.zip!/"/>
+		<relative-module-src project-related="jar://$PROJECT_DIR$/Beats/src/res/libs/Slick_Src.zip!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/Beats/src/res/libs/slick.jar!/"/>
+	</lib>
+</component>
